@@ -8,3 +8,6 @@ Zeppelin: http://10.252.54.71:9995
 
 HAWQ: 10.252.54.71:15432 (gpadmin/gpadmin)
 
+Hive: 10.252.54.71:10000 (hive/admin)
+
+
