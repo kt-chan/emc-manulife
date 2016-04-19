@@ -1,0 +1,1 @@
+sqoop list-tables --connect jdbc:oracle:thin:@//10.128.91.40:1521/chkp_rac  --username niki_ng --password apri2016

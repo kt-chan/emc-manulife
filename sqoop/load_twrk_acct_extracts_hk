@@ -1,0 +1,5 @@
+## sqoop import into HDFS on large table TWRK_ACCT_EXTRACTS_HK (55GB) ##
+sqoop import --connect jdbc:oracle:thin:@//10.128.91.40:1521/chkp_rac  --username niki_ng --password apri2016 \
+  --table CAS.TWRK_ACCT_EXTRACTS_HK \
+  -m 1  \
+  --target-dir /tmp/oracle/04

@@ -1,0 +1,5 @@
+
+## getting database statistic for table size ##
+sqoop import --connect jdbc:oracle:thin:@//10.128.91.40:1521/chkp_rac  --username niki_ng --password apri2016 \
+  --query 'select segment_name,segment_type,bytes/1024/1024 MB  from dba_segments where segment_type='"'"'TABLE'"'"' AND $CONDITIONS order by bytes' \
+  -m 1 --target-dir /tmp/oracle/02
