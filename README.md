@@ -10,6 +10,8 @@ Zeppelin: http://10.252.54.71:9995
 
 Sample Zeppelin Notebook: http://10.252.54.71:9995/#/notebook/2BJK5MZNE
 
+Sample Zeppelin Notebook (Sqoop to HAWQ end-to-end): http://10.252.54.71:9995/#/notebook/2BH4MD59A
+
 HAWQ: 10.252.54.71:15432 (gpadmin/gpadmin)
 
 Hive: 10.252.54.71:10000 (hive/admin)
