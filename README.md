@@ -18,4 +18,8 @@ Hive: 10.252.54.71:10000 (hive/admin)
 
 Nifi: http://10.252.54.71:8082/nifi 
 
+##Data Transformation Demo
+
+http://10.252.54.71:9995/#/notebook/2BGTBKHWX
+
 
