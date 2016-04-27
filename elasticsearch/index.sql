@@ -1,6 +1,9 @@
 add jar /home/data/elasticsearch-hadoop-2.3.0/dist/elasticsearch-hadoop-2.3.0.jar;
 add jar /usr/hdp/2.4.0.0-169/hive/lib/commons-httpclient-3.0.1.jar;
 
+use cas;
+drop table vdwh_pol_es;
+
 create external table vdwh_pol_es (
 pol_num               string ,
 pol_stat_cd           string ,
@@ -81,10 +84,12 @@ bill_to_dt            string ,
 pt_susp              double 
 )
 STORED BY 'org.elasticsearch.hadoop.hive.EsStorageHandler'
-TBLPROPERTIES('es.nodes' = 'nn1', 'es.resource' = 'cas/vdwh_pol');
+TBLPROPERTIES('es.nodes' = 'nn1', 'es.resource' = 'data/cas.vdwh_pol');
 
 insert into vdwh_pol_es select * from vdwh_pol;
 
+use stg;
+drop table policy_master_es;
 create external table policy_master_es (
  eff_frm_dt            string,
  eff_to_dt             string,
@@ -174,6 +179,6 @@ create external table policy_master_es (
  last_upd_tms          string
  )
  STORED BY 'org.elasticsearch.hadoop.hive.EsStorageHandler'
-TBLPROPERTIES('es.nodes' = 'nn1', 'es.resource' = 'stg/pol_master');
+TBLPROPERTIES('es.nodes' = 'nn1', 'es.resource' = 'data/stg.pol_master');
 
 insert into policy_master_es select * from policy_master;
