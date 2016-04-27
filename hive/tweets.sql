@@ -1,8 +1,12 @@
-CREATE EXTERNAL TABLE tweets (
+add jar /home/data/json-serde-1.3.7-jar-with-dependencies.jar;
+set hive.support.sql11.reserved.keywords=false;
+
+CREATE TABLE tweets (
   id BIGINT,
   created_at STRING,
   source STRING,
   favorited BOOLEAN,
+retweet_count INT,
   retweeted_status STRUCT<
     text:STRING,
     user:STRUCT<screen_name:STRING,name:STRING>,
@@ -23,5 +27,7 @@ CREATE EXTERNAL TABLE tweets (
     time_zone:STRING>,
   in_reply_to_screen_name STRING
 ) 
-ROW FORMAT SERDE 'Org.Openx.Data.Jsonserde.JsonSerDe'
+ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
 STORED AS TEXTFILE;
+
+load data inpath '/xd/tweets_hdfs/*' overwrite into table tweets;
