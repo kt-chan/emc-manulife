@@ -1,6 +1,8 @@
 add jar /home/data/json-serde-1.3.7-jar-with-dependencies.jar;
 set hive.support.sql11.reserved.keywords=false;
 
+
+drop table if exists tweets;
 CREATE TABLE tweets (
   id BIGINT,
   created_at STRING,
@@ -32,6 +34,7 @@ STORED AS TEXTFILE;
 
 load data inpath '/xd/tweets_hdfs/*' overwrite into table tweets;
 
+drop table if exists tweets_manulife;
 
 CREATE TABLE tweets_manulife (
   id BIGINT,
@@ -63,3 +66,5 @@ ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
 STORED AS TEXTFILE;
 
 load data inpath '/xd/tweets_manulife/*' overwrite into table tweets_manulife;
+
+select text from tweets_manulife limit 10;

@@ -1,3 +1,3 @@
-stream create --name tweets_hdfs --definition "twitterstream --consumerKey=O2XL3Esd79dnnJDUwKBcL9OAU --consumerSecret=pObIdj2GHEPikhypHxvVf53xNMNLGs2xsu3MddLPZNi7YApea7 --accessToken=25247974-nILS71oDxWw7ktDo670RcagQTptVEG8IoKYbK1ruQ --accessTokenSecret=oRQ82UaEi8JHO0liXyykLqgrKOoQODHR6bTGuM6Vzcgav |  hdfs  --rollover=1M" --deploy
+stream create --name tweets_hdfs --definition "twitterstream --consumerKey=O2XL3Esd79dnnJDUwKBcL9OAU --consumerSecret=pObIdj2GHEPikhypHxvVf53xNMNLGs2xsu3MddLPZNi7YApea7 --accessToken=25247974-nILS71oDxWw7ktDo670RcagQTptVEG8IoKYbK1ruQ --accessTokenSecret=oRQ82UaEi8JHO0liXyykLqgrKOoQODHR6bTGuM6Vzcgav |  hdfs  --rollover=1M" 
 
 

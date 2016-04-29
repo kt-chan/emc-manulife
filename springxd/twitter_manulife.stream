@@ -1,1 +1,1 @@
-stream create --name tweets_manulife --definition "twittersearch --query='#manulife' --consumerKey=O2XL3Esd79dnnJDUwKBcL9OAU --consumerSecret=pObIdj2GHEPikhypHxvVf53xNMNLGs2xsu3MddLPZNi7YApea7 |  hdfs  --rollover=1M" --deploy
+stream create --name tweets_manulife --definition "twittersearch --query='#manulife' --consumerKey=O2XL3Esd79dnnJDUwKBcL9OAU --consumerSecret=pObIdj2GHEPikhypHxvVf53xNMNLGs2xsu3MddLPZNi7YApea7 |  hdfs  --rollover=1M" 
