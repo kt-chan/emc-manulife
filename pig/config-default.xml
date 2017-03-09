@@ -1,0 +1,20 @@
+<!-- Default values for the workflow job parameters -->
+<configuration>
+	<property>
+		<name>jobTracker</name>
+		<value>nn1.hdp:8050</value>
+	</property>
+	<property>
+		<name>nameNode</name>
+		<value>hdfs://nn1.hdp:8020</value>
+	</property>
+	<property>
+		<name>queueName</name>
+		<value>default</value>
+	</property>
+        <property>
+                <name>applicationPath</name>
+                <value>hdfs://nn1.hdp:8020/user/oozie/workflows/examples</value>
+        </property>
+
+</configuration>

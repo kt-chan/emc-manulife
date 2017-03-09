@@ -1,0 +1,67 @@
+<workflow-app name='data-refresh-wf' xmlns="uri:oozie:workflow:0.3">
+    <start to='pig-node'/>
+    <action name='pig-node'>
+       <pig>
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.queue.name</name>
+                    <value>${queueAppName}</value>
+                </property>
+            </configuration>
+            <script>${applicationPath}/script_exrate.pig</script>
+            <file>lib/hive-site.xml</file>
+       </pig>
+       <ok to="hive2-action-fxrate"/>
+       <error to="pig-fail"/>
+    </action>
+	<action name="hive2-action-fxrate">
+        <hive2 xmlns="uri:oozie:hive2-action:0.1">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.compress.map.output</name>
+                    <value>true</value>
+                </property>
+		<property>
+                    <name>mapred.queue.name</name>
+                    <value>${queueAppName}</value>
+                </property>
+            </configuration>
+            <jdbc-url>jdbc:hive2://localhost:10000/default</jdbc-url>
+            <script>${applicationPath}/fxrate.sql</script>
+        </hive2>
+        <ok to="hive2-action-policyrefresh"/>
+        <error to="hive-fail"/>
+    </action>
+	<action name="hive2-action-policyrefresh">
+        <hive2 xmlns="uri:oozie:hive2-action:0.1">
+            <job-tracker>${jobTracker}</job-tracker>
+            <name-node>${nameNode}</name-node>
+            <configuration>
+                <property>
+                    <name>mapred.compress.map.output</name>
+                    <value>true</value>
+                </property>
+				<property>
+                    <name>mapred.queue.name</name>
+                    <value>${queueAppName}</value>
+                </property>
+            </configuration>
+            <jdbc-url>jdbc:hive2://localhost:10000/default</jdbc-url>
+            <script>${applicationPath}/policy_refresh.sql</script>
+        </hive2>
+        <ok to="end"/>
+        <error to="hive-fail"/>
+    </action>	
+    <kill name="pig-fail">
+             <message>Pig failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+	<kill name="hive-fail">
+             <message>Hive failed, error message[${wf:errorMessage(wf:lastErrorNode())}]</message>
+    </kill>
+    <end name="end"/>
+</workflow-app>
+
